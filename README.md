@@ -1,5 +1,7 @@
 ### Faltavam 4 minutos webapp
 
+Link para o webapp: https://faltavam4minutos.streamlit.app/
+
 O objetivo deste webapp é mostrar na prática aplicações de ciência de dados ao futebol. Para tanto, exploraremos duas das principais etapas de um projeto de ciência de dados:
 análise exploratória (EDA) e aplicação de machine learning.
 
@@ -16,11 +18,13 @@ Recomenda-se utilizar o tema escuro (`Settings >> Theme >> Dark`) para que as co
 
           
 ### Como navegar neste webapp
-* **Brasil na copa**:\\
+* **Brasil na copa**:
+* 
 Análise exploratória de dados mostrando como a ciência de dados pode ajudar a analisar uma partida de futebol\\
 Nesta seção usamos dados da Copa do Mundo de 2022 no Qatar fornecido pela empresa Statsbomb.
 
-* **Expected Goals**: \\
+* **Expected Goals**:
+* 
 Aqui mostraremos como Machine Learning pode ser aplicado ao futebol através da sua métrica mais famosa: Expected Goals (xG).\\
 Nesta seção você poderá simular a probabilidade de um chute resultar em gol com base em algumas features importantes encontradas pelo nosso modelo
 
