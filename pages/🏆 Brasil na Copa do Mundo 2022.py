@@ -52,8 +52,8 @@ if selected_game == 'Desempenho geral (todos jogos)':
     st.markdown(""" 
 
     Uma métrica comum ao se analisar um jogo de futebol usando dados é o passe perigoso (danger pass). Esse é um passe que foi feito por um jogador e que, dentro de uma janela de tempo 
-    pré-definida, resulta em uma finalização ao gol. Para esta análise usamos uma janela de 10 segundos, ou seja, cada passe que resultou em uma finalização a gol dentro de 10 segundos conta
-    como um passe perigoso. Este exemplo ilustra bem um paradigma constante que quem trabalha com dados enfrenta: **hipóteses sempre precisam ser feitas** e virão com prós e contras. No nosso caso,
+    pré-definida, resulta em uma finalização ao gol. Para esta análise usamos uma janela de 10 segundos, ou seja, cada passe que resultou em uma finalização a gol em até 10 segundos após o passe ser feito conta
+    como um passe perigoso. Este exemplo ilustra bem um paradigma que quem trabalha com dados enfrenta: **hipóteses sempre precisam ser feitas** e virão com prós e contras. No nosso caso,
     poderemos deixar de contar passes que geraram finalizações com mais tempo. Mas revendo os jogos e analisando as finalizações entendemos que 10 segundos é uma janela adequada. \\
     \\
     Com base nesta lista de passes perigosos, podemos ver quem foram os jogadores brasileiros que mais contribuíram com passes perigosos na jornada do time na Copa:
@@ -63,6 +63,7 @@ if selected_game == 'Desempenho geral (todos jogos)':
 
     st.markdown(""" 
 
+    A métrica desenvolvida foi passes/jogo. Em um campeonato curto como a copa do mundo essa métrica favorece jogadores como Dani Alves, que jogou apenas 2 jogos. Mas serve para atestar a regularidade de jogadores como Raphinha, que tendo disputado os 5 jogos teve média de 1 passe perigoso por jogo.
     Em seguida, podemos ver de onde no campo saíram estes passes perigosos com base no mapa de calor a seguir:
 
     """)  
@@ -87,6 +88,8 @@ elif selected_game == 'Brasil x Croácia':
 
     st.write('### Brasil x Croácia')
     
+    st.image('./pages/wagnermoura.jpg')
+
     st.markdown(""" 
 
     Olhando-se individualmente cada jogo algumas outras análises interessantes são possíveis. 
