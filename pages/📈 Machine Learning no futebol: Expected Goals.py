@@ -4,7 +4,9 @@ import numpy as np
 
 st.set_page_config(page_title = 'Expected Goals', page_icon = '👤') #layout='wide',
 
-#st.sidebar.image('./pages/2022_FIFA_World_Cup.png', use_column_width=True)
+st.sidebar.markdown('# Faltavam 4 minutos')
+st.sidebar.markdown('## Python web app')
+st.sidebar.markdown('## Aplicações de ciência de dados ao futebol')
 st.sidebar.image('./pages/footy.jpeg', use_column_width=True)
 st.sidebar.markdown("""---""")
 
