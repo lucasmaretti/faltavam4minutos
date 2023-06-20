@@ -38,6 +38,7 @@ Recomenda-se utilizar o tema escuro (`Settings >> Theme >> Dark`) para que as co
 - [Sobre análise de dados no futebol - parte 2](https://medium.com/zeroeum/sobre-o-uso-de-dados-no-futebol-parte-2-5bab96b26e43)
 
             
-#### Autor:
+#### Autores:
 - Lucas Maretti: lucas.maretti@gmail.com
+- Gabriel Bortoli: gbortoli@usp.br
             """)

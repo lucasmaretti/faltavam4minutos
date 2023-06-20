@@ -59,7 +59,7 @@ def predict_class(features):
     probabilities = model.predict_proba([features])
 
     # Return the predicted class label
-    return probabilities[0][0]
+    return probabilities[1][0]
 
 # Create the Streamlit app
 def main():
