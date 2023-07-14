@@ -73,7 +73,7 @@ def predict_class(features):
 # Create the Streamlit app
 def main():
     st.write('### Modelo de Expected Goals (xG) usando Random Forest Classifier')
-    st.write('Insira valores para os parâmetros abaixo (dica: chutes mais perto do gol e com maior ângulo ajudam ;)):')
+    st.write('Insira valores para os parâmetros abaixo (dica: chutes mais perto do gol e com maior ângulo têm mais chance de conversão ;)):')
 
     # Create input fields for each feature
     inputs = []
