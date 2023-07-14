@@ -24,7 +24,7 @@ A partir de uma base de dados de centenas de partidas e milhares de chutes que r
 possibilidade de a finalização ser um gol e 1 indicando certeza de gol).\\
 \\
 Com base nisto podemos desenvolver um diagrama como o abaixo, tirado do livro "Soccermatics". Temos, para diferentes regiões da grande área, de onde é mais provável um chute resultar em gol.
-Clubes de futebol podem usar o xG para avaliar e comparar o desempenho de jogadores. Ao analisar o xG de um jogador, os clubes podem avaliar sua capacidade de criar ou converter chances de gol. Isso ajuda a identificar jogadores que geram consistentemente chances de alta qualidade ou possuem excelentes habilidades de finalização.\\
+Clubes de futebol podem usar o xG para avaliar e comparar o desempenho de jogadores. Ao analisar o xG de um jogador, os clubes podem avaliar sua capacidade de criar ou converter chances de gol. Isso ajuda a identificar jogadores que geram consistentemente chances de alta qualidade ou possuem excelentes habilidades de finalização.
 
 """)
                 
