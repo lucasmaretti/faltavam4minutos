@@ -12,6 +12,25 @@ import matplotlib.patches as mpatches
 
 
 class WorldCup():
+
+    """
+    Class that will perform calculations needed for World Cup 2022 analysis.
+
+    Parameters:
+        team (str): The name of the team.
+        match_ids (list): List of match IDs.
+
+    Attributes:
+        team (str): The name of the team.
+        match_ids (list): List of match IDs.
+        parser (mplsoccer.Sbopen): Instance of Sbopen class for parsing match data.
+        red (list): RGB values for red color.
+        blue (list): RGB values for blue color.
+        nomes (dict): Dictionary mapping player names to their abbreviations.
+        times (dict): Dictionary mapping team names to their translations.
+        opponent (dict): Dictionary mapping match IDs to opponent team names.
+        match_name (dict): Dictionary mapping match IDs to match names.
+    """
     
     
     def __init__(
@@ -20,6 +39,13 @@ class WorldCup():
         match_ids: list
                 )-> None:
         
+        """
+        Initializes the WorldCup class.
+
+        Args:
+            team (str): The name of the team.
+            match_ids (list): List of match IDs.
+        """
         
         self.team = team
         self.match_ids = match_ids
@@ -73,8 +99,17 @@ class WorldCup():
             
         }
         
-        
+
     def get_data(self) -> pd.DataFrame:
+
+        """
+        Get the match data for the given team and match IDs.
+
+        Returns:
+            pd.DataFrame: The match data.
+
+        """
+
         parser = Sbopen()
         matches = parser.match(competition_id=43, season_id=106) 
         matches = matches[matches['match_id'].isin(self.match_ids)]
@@ -82,10 +117,29 @@ class WorldCup():
         return matches
     
     def __get_no_games(self):
+
+        """
+        Get the number of games.
+
+        Returns:
+            int: The number of games.
+        """
+
         no_games = len(self.match_ids)
         return no_games
     
     def get_passes(self, match_id):
+
+        """
+        Get the successful passes made by the team until the first substitution in a match.
+
+        Args:
+            match_id: The ID of the match.
+
+        Returns:
+            pd.DataFrame: DataFrame containing the successful passes.
+        """
+
         df, related, freeze, tactics = self.parser.event(match_id)
         #check for index of first sub
         sub = df.loc[df["type_name"] == "Substitution"].loc[df["team_name"] == self.team].iloc[0]["index"]
@@ -99,6 +153,18 @@ class WorldCup():
         return df_pass
     
     def danger_passes(self, shot_window:int = 5, xg:float = 0.1) -> pd.DataFrame:
+
+        """
+        Get the danger passes made by the team that led to shots.
+
+        Args:
+            shot_window (int): The time window in seconds to consider for a dangerous pass.
+            xg (float): The minimum expected goals value for a shot to be considered dangerous.
+
+        Returns:
+            pd.DataFrame: DataFrame containing the danger passes.
+        """
+
         no_games = len(self.match_ids)
         #declare an empty dataframe
         df_danger_passes = pd.DataFrame()
@@ -134,6 +200,14 @@ class WorldCup():
     
     
     def danger_pass_count(self, df_danger_passes):
+
+        """
+        Plot the count of dangerous passes per player.
+
+        Args:
+            df_danger_passes (pd.DataFrame): DataFrame containing the dangerous passes.
+        """
+
         pass_count = df_danger_passes.groupby(["player_name"]).x.count()/self.__get_no_games()
         pass_count = pass_count.sort_values(ascending = False)
         #make a histogram
@@ -145,6 +219,7 @@ class WorldCup():
         plt.show()
         
     def danger_pass_count1(self, df_danger_passes):
+
         pass_count = df_danger_passes.groupby(["player_name"]).x.count() / self.__get_no_games()
         pass_count = pass_count.sort_values(ascending=False)
 
@@ -166,6 +241,16 @@ class WorldCup():
     
 
     def heatmap_danger_passes(self, df_danger_passes):
+
+        """
+        Plots a heatmap of the dangerous passes.
+
+        Args:
+            df_danger_passes (pd.DataFrame): A dataframe of the dangerous passes -> It is suggested to use the output of the danger_passes() method
+
+        Returns:
+            A heatmaps of the danger passes.
+        """
             
         #plot vertical pitch
         pitch = VerticalPitch(pitch_color = 'grass', line_zorder=2, line_color='black', half = True)
@@ -185,6 +270,11 @@ class WorldCup():
         
         
     def get_shots(self):
+
+        """
+        Gets all the shots.
+
+        """
         
         allgames = pd.DataFrame()
         for match_id in self.match_ids:
@@ -198,6 +288,16 @@ class WorldCup():
         return shots
     
     def heatmap_shots(self, shots):
+
+        """
+        Plots a heatmap of the shots
+
+        Args:
+            shots (pd.DataFrame): A dataframe of the shots -> It is suggested to use the output of the get_shots() method
+
+        Returns:
+            A heatmaps of the danger shots.
+        """
         
         x, y = np.array(shots.x), np.array(shots.y)
         xg = np.array(shots['shot_statsbomb_xg'].tolist())
@@ -217,6 +317,17 @@ class WorldCup():
         ax.legend(handles = [red_patch, blue_patch], loc='upper right')
         
     def plot_passing_network(self, df_pass):
+
+        """
+        Plots the passing network of the team. For more info please refer to: https://soccermatics.readthedocs.io/en/latest/gallery/lesson1/plot_PassNetworks.html
+
+        Args:
+            df_pass (pd.DataFrame): A dataframe of the team passes -> It is suggested to use the output of the get_passes() method
+
+        Returns:
+            A figure with the passing network of the team.
+        """
+
         scatter_df = pd.DataFrame()
         for i, name in enumerate(df_pass["player_name"].unique()):
             passx = df_pass.loc[df_pass["player_name"] == name]["x"].to_numpy()

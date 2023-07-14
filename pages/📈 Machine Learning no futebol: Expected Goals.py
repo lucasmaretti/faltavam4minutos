@@ -18,11 +18,19 @@ st.write('### Machine Learning aplicado aos dados de futebol: Entendendo Expecte
 
 st.markdown(""" 
 
-A definição de xG é a probabilidade de que em um dia típico de futebol um chute resulte em um gol. Costuma ser baseado em medidas de muitos chutes dentro de uma mesma liga e temporada, ou agregando-se dados de diferentes ligas (estratégia usada neste projeto).\\
+A definição de xG é a probabilidade de que um chute resulte em gol em um jogo de futebol. Costuma ser baseado em medidas de muitos chutes dentro de uma mesma liga e temporada, ou agregando-se dados de diferentes ligas (estratégia usada neste projeto).\\
+        
 \\
-Para mais informações sobre este tema recomendamos assistir a este [video](https://www.youtube.com/watch?v=Xc6IG9-Dt18) e depois a este [vídeo](https://www.youtube.com/watch?v=310_eW0hUqQ) na sequência.
-A expectativa de gols atribui uma probabilidade entre 0 e 1 a cada finalização feita por um jogador em um jogo (0 indicando nenhuma
-possibilidade de a finalização ser um gol e 1 indicando certeza de gol). \\
+Com base em uma base de dados de centenas de partidas e milhares de chutes que resultaram e não em gol, aplicamos técnicas de machine learning para converter isto em um problema da seguinte natureza: atribuímos uma probabilidade entre 0 e 1 a cada finalização feita por um jogador em um jogo (0 indicando nenhuma
+possibilidade de a finalização ser um gol e 1 indicando certeza de gol). Com base nisto podemos tem um diagrama como o abaixo que mostra, para diferentes regiões da grande área, de onde é mais provável um chute resultar em gol.
+Clubes de futebol podem usar o xG para avaliar e comparar o desempenho de jogadores. Ao analisar o xG de um jogador, os clubes podem avaliar sua capacidade de criar ou converter chances de gol. Isso ajuda a identificar jogadores que geram consistentemente chances de alta qualidade ou possuem excelentes habilidades de finalização.
+\\
+""")
+                
+st.image('./pages/squashxG.png', width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
+            
+st.markdown(""" Para mais informações sobre este tema recomendamos assistir a este [video](https://www.youtube.com/watch?v=Xc6IG9-Dt18).
+
 \\
 Em termos de machine learning, portanto, estamos falando de um problema de classificação.
 O modelo disponibilizado aqui para simulação dos valores de xG foi desenvolvido na disciplina MAI5024 do programa de mestrado em ciência de dados do MECAI-USP. O repositório referente a este projeto com o detalhamento completo da modelagem pode ser acessado [aqui](https://github.com/lucasmaretti/football_analytics). \\
